@@ -4,7 +4,7 @@
 #
 Name     : pypi-logical_unification
 Version  : 0.4.5
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/51/5a/f36a6ade0659fc3522606197d26a8058b84781430ab0443dcd185a6b5b44/logical-unification-0.4.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/51/5a/f36a6ade0659fc3522606197d26a8058b84781430ab0443dcd185a6b5b44/logical-unification-0.4.5.tar.gz
 Summary  : Logical unification in Python
@@ -62,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653342005
+export SOURCE_DATE_EPOCH=1656387141
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -100,7 +100,7 @@ export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 python3 -tt setup.py build install --root=%{buildroot}-v3
 popd
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
