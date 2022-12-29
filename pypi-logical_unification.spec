@@ -4,7 +4,7 @@
 #
 Name     : pypi-logical_unification
 Version  : 0.4.5
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/51/5a/f36a6ade0659fc3522606197d26a8058b84781430ab0443dcd185a6b5b44/logical-unification-0.4.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/51/5a/f36a6ade0659fc3522606197d26a8058b84781430ab0443dcd185a6b5b44/logical-unification-0.4.5.tar.gz
 Summary  : Logical unification in Python
@@ -16,6 +16,9 @@ Requires: pypi-logical_unification-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(multipledispatch)
 BuildRequires : pypi(toolz)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # Logical Unification
@@ -62,15 +65,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656395280
+export SOURCE_DATE_EPOCH=1672288137
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -87,7 +90,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-logical_unification
-cp %{_builddir}/logical-unification-0.4.5/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-logical_unification/45b077e352c945bbc3dfcc8cfe8aaf4211f2185c
+cp %{_builddir}/logical-unification-%{version}/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-logical_unification/45b077e352c945bbc3dfcc8cfe8aaf4211f2185c || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
