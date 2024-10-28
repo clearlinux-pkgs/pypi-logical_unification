@@ -5,7 +5,7 @@
 #
 Name     : pypi-logical_unification
 Version  : 0.4.6
-Release  : 16
+Release  : 17
 URL      : https://files.pythonhosted.org/packages/c0/73/8dac224c46949e61bc52558384138a2b79fa0b7be10367074862fe9994dd/logical-unification-0.4.6.tar.gz
 Source0  : https://files.pythonhosted.org/packages/c0/73/8dac224c46949e61bc52558384138a2b79fa0b7be10367074862fe9994dd/logical-unification-0.4.6.tar.gz
 Summary  : Logical unification in Python
